@@ -13,6 +13,7 @@ $count = count($list);
 $tabs = $params->get('count',5);
 $width = ($params->get('width') == NULL OR $params->get('width') == 0 OR $params->get('width') == 'auto')? 'auto': $params->get('width').'px';
 $tabs_position = $params->get('tabs_position','top');
+$readmore_text = $params->get('readmore_text');
 
 if(intval($tabs) > $count) $tabs = $count;
 elseif(intval($tabs) == 0) $tabs = $count;
@@ -21,6 +22,7 @@ $tabs_title = modXpertTabsHelper::generateTabs($tabs,$list,$params);
 ?>
     <!--Xpert Tabs by ThemeXpert(www.themexpert.com)- Start-->
     <div id="<?php echo $module_id;?>" class="xt-wrapper <?php echo $params->get('style','style1');?>" style="width:<?php echo $width;?>">
+
         <?php if($tabs_position == 'top') echo $tabs_title;?>
 
         <div id="<?php echo $module_id;?>-pans" class="xt-pans">
@@ -30,6 +32,10 @@ $tabs_title = modXpertTabsHelper::generateTabs($tabs,$list,$params);
                     if($list[$i]->introtext != NULL){
                         echo "<div class='xt-pane'>\n";
                             echo $list[$i]->introtext;
+                        if( $params->get('show_readmore') )
+                        {
+                            echo '<a class="btn xt-readmore" href="'. $list[$i]->link .'">'. $readmore_text .'</a>';
+                        }
                         echo "</div>\n";
                     }
                 }
