@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Xpert Tabs
- * @version 2.1
+ * @version 3.0
  * @author ThemeXpert http://www.themexpert.com
  * @copyright Copyright (C) 2009 - 2011 ThemeXpert
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -11,17 +11,38 @@
 // no direct access
 defined('_JEXEC') or die('Restricted accessd');
 
+// Check for the framework, if not found eject
+include_once JPATH_LIBRARIES . '/xef/bootstrap.php';
+
+if( !defined('XEF_INCLUDED'))
+{
+    echo 'Your Module installation is broken; please re-install. Alternatively, extract the installation archive and copy the xef directory inside your site\'s libraries directory.';
+    return ;
+}
 
 // Include the syndicate functions only once
-require_once (dirname(__FILE__).DS.'helper.php');
+require_once (dirname(__FILE__). '/helper.php');
 
-$list = modXpertTabsHelper::getLists($params);
-$module_id = 'xt'.$module->id;
+//set module id
+$module_id = XEFUtility::getModuleId($module, $params);
 
-modXpertTabsHelper::loadStyles($params);
-modXpertTabsHelper::loadScripts($params, $module_id);
+// Content source
+$content_source = $params->get('content_source','joomla');
 
-$content_source = $params->get('content_source','mods');
+// Import source and get the class name
+$class_name = importSource($content_source);
 
-if($content_source == 'joomla' ) require( JModuleHelper::getLayoutPath('mod_xperttabs') );
-else require( JModuleHelper::getLayoutPath('mod_xperttabs','modules') );
+// Create instance of the class
+$instance = new $class_name($module, $params);
+
+// Get the items
+$items = $instance->getItems();
+
+// Load Stylesheet file
+XEFUtility::loadStyleSheet($module, $params);
+
+modXpertTabsHelper::loadScripts($module, $params);
+
+$layout = ( $content_source == 'module' ) ? 'modules' : 'default';
+
+require JModuleHelper::getLayoutPath($module->module, $params->get('layout', $layout));

@@ -7,14 +7,14 @@
     <authorUrl>http://www.themexpert.com</authorUrl>
     <copyright>(C) 2008 - 2011 ThemeXpert, LLC. All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
-    <version>2.1</version>
+    <version>3.0</version>
     <description>Xpert Tabs, Next Generation Tab Module For Joomla! designed to show section articles and modules in a pleasing format.Brought to you by ThemeXpert</description>
     
     <files>
         <filename module="mod_xperttabs">mod_xperttabs.php</filename>
         <filename>helper.php</filename>
         <filename>index.html</filename>
-        <folder>styles</folder>
+        <folder>assets</folder>
         <folder>tmpl</folder>
     </files>
 
@@ -23,114 +23,276 @@
     </languages>
 
     <config>
-        <fields name="params" >
-            <fieldset name="CONTENT_SOURCE_SETTINGS">
+        <fields name="params" addfieldpath="libraries/xef/fields">
+            <fieldset name="GENERAL_SETTINGS">
 
-                <field name="content_source" type="list" default="mods" label="MOD_XPERTTABS_FIELD_CONTENT_SOURCE_LABEL" description="MOD_XPERTTABS_FIELD_CONTENT_SOURCE_DESC">
-                    <option value="joomla">Joomla Contents</option>
-                    <option value="mods">Modules</option>
+                <field name="utility" type="utility" />
+
+                <field name="generaldoc" type="doc" message="DOC_MSG" />
+
+                <field name="content_source" type="source" default="joomla"
+                       providers='joomla,k2,module'
+                       label="CONTENT_SOURCE"
+                       description="CONTENT_SOURCE_DESC" />
+
+                <field name="tab_settings" type="spacer" label="Tab settings" description="" />
+
+                <field name="width" type="text"
+                       default="auto"
+                       label="MOD_XPERTTABS_FIELD_WIDTH_LABEL"
+                       description="MOD_XPERTTABS_FIELD_WIDTH_DESC" />
+
+                <field name="count" type="text" default="5"
+                       label="MOD_XPERTTABS_FIELD_COUNT_LABEL"
+                       description="MOD_XPERTTABS_FIELD_COUNT_DESC" />
+
+                <field name="tabs_position" type="radio"
+                       default="top"
+                       class="btn-group"
+                       label="MOD_XPERTTABS_FIELD_TABS_POSITION_LABEL"
+                       description="MOD_XPERTTABS_FIELD_TABS_POSITION_DESC">
+                    <option value="top">Top</option>
+                    <option value="bottom">Bottom</option>
                 </field>
+
+                <field name="tabs_interaction" type="radio"
+                       default="click"
+                       class="btn-group"
+                       label="MOD_XPERTTABS_FIELD_TABS_INTERACTION_LABEL"
+                       description="MOD_XPERTTABS_FIELD_TABS_INTERACTION_DESC">
+                    <option value="click">Click</option>
+                    <option value="mouseenter">Mouse Over</option>
+                </field>
+
+                <field name="tabs_title_type" type="radio"
+                       default="content"
+                       class="btn-group"
+                       label="MOD_XPERTTABS_FIELD_TABS_TITLE_LABEL"
+                       description="MOD_XPERTTABS_FIELD_TABS_TITLE_DESC">
+                    <option value="content">Content title</option>
+                    <option value="custom">Custom</option>
+                </field>
+
+                <field name="tabs_title_custom" type="textarea"
+                   rows="2" cols="60"
+                   default="Tab Title1, Tab Title2, Tab Title3"
+                   label="MOD_XPERTTABS_FIELD_CUSTOM_TITLES_LABEL"
+                   description="MOD_XPERTTABS_FIELD_CUSTOM_TITLES_DESC"/>
+
+                <field name="intro_limit_type" type="radio" default="0"
+                      class="btn-group"
+                      label="INTRO_TEXT_LIMIT_TYPE"
+                      description="INTRO_TEXT_LIMIT_TYPE_DESC">
+                   <option value="0">JNO</option>
+                   <option value="words">WORDS</option>
+                   <option value="chars">CHARACTERS</option>
+               </field>
+
+               <field name="intro_limit" type="text" default="30"
+                   label="INTRO_TEXT_LIMIT"
+                   description="INTRO_TEXT_LIMIT_DESC" />
+
             </fieldset>
 
-            <fieldset name="JOOMLA_CONTENT_SETTINGS">
-                <field name="catid" type="category" extension="com_content" multiple="true" size="10" default="" label="JCATEGORY" description="Select Category" >
-                    <option value="">JOPTION_ALL_CATEGORIES</option>
+            <fieldset name="JOOMLA">
+
+                <field name="jomcatfilter" type="radio" default="0"
+                       class="btn-group"
+                       filter="integer"
+                       label="JOOM_CATEGOTY_FILTER_LABEL"
+                       description="JOOM_CATEGOTY_FILTER_DESC">
+                      <option value="0">ALL</option>
+                      <option value="1">SELECT</option>
                 </field>
 
-                <field name="ordering" type="list" default="published" label="Ordering" description="">
+               <field name="jom_catid" type="category" extension="com_content" multiple="true"
+                      class="chzn-select"
+                      label="JCATEGORY"
+                      description="Select Category" />
+
+                <field name="jom_ordering" type="list" default="p_dsc"
+                       label="ORDERING_LABEL"
+                       description="ORDERING_DESC">
                     <option value="c_dsc">Recently Added First</option>
                     <option value="m_dsc">Recently Modified First</option>
                     <option value="p_dsc">Recently Published First</option>
                     <option value="mc_dsc">Recently Touched First</option>
                 </field>
 
-                <field name="user_id" type="list" default="0" label="Authors" description="">
+                <field name="jom_user_id" type="list" default="0"
+                       label="AUTHORS_LABEL"
+                       description="AUTHORS_DESC">
                     <option value="0">Anyone</option>
                     <option value="by_me">Added or modified by me</option>
                     <option value="not_me">Not added or modified by me</option>
                 </field>
 
-                <field name="show_featured" type="list" default="" label="Featured Articles" description="">
+                <field name="jom_show_featured" type="list" default=""
+                       label="FEATURED_LABEL"
+                       description="FEATURED_DESC">
                     <option value="">JSHOW</option>
                     <option value="0">JHIDE</option>
                     <option value="1">JFEATURED</option>
                 </field>
             </fieldset>
 
-            <fieldset name="MODULE_SETTINGS">
-                <field name="modules" type="sql" default="0" multiple="multiple" size="10" label="MOD_XPERTTABS_FIELD_MODULES_LABEL" description="MOD_XPERTTABS_FIELD_MODULES_DESC" query="SELECT id, module, title FROM #__modules WHERE  `client_id`=0 AND ( `published` !=-2 AND `published` !=0 ) ORDER BY position ASC" key_field="id" value_field="title" />
-            </fieldset>
+            <fieldset name="K2">
 
-            <fieldset name="TAB_SETTINGS">
-                <field name="width" type="text" label="MOD_XPERTTABS_FIELD_WIDTH_LABEL" description="MOD_XPERTTABS_FIELD_WIDTH_DESC" />
-
-            <field name="count" type="text" default="5" label="MOD_XPERTTABS_FIELD_COUNT_LABEL" description="MOD_XPERTTABS_FIELD_COUNT_DESC" />
-
-            <field name="tabs_position" type="list" default="top" label="MOD_XPERTTABS_FIELD_TABS_POSITION_LABEL" description="MOD_XPERTTABS_FIELD_TABS_POSITION_DESC">
-                <option value="top">Top</option>
-                <option value="bottom">Bottom</option>
-            </field>
-
-            <field name="tabs_interaction" type="list" default="click" label="MOD_XPERTTABS_FIELD_TABS_INTERACTION_LABEL" description="MOD_XPERTTABS_FIELD_TABS_INTERACTION_DESC">
-                <option value="click">Click</option>
-                <option value="mouseenter">Mouse Over</option>
-            </field>
-
-            <field name="tabs_title_type" type="list" default="content" label="MOD_XPERTTABS_FIELD_TABS_TITLE_LABEL" description="MOD_XPERTTABS_FIELD_TABS_TITLE_DESC">
-                <option value="content">By Content Title</option>
-                <option value="custom">Custom</option>
-            </field>
-
-            <field name="tabs_title_custom" type="textarea" rows="4" cols="40" default="Tab Title1, Tab Title2, Tab Title3" label="MOD_XPERTTABS_FIELD_CUSTOM_TITLES_LABEL" description="MOD_XPERTTABS_FIELD_CUSTOM_TITLES_DESC"/>
-
-            <field name="show_readmore" type="list" default="1" label="MOD_XPERTTABS_FIELD_DEFAULT_READMORE_LABEL" description="MOD_XPERTTABS_FIELD_DEFAULT_READMORE_DESC">
-                <option value="1">Show</option>
-                <option value="0">Hide</option>
-            </field>
-
-            <field name="readmore_text" type="text" default="Read more.." label="MOD_XPERTTABS_FIELD_CUSTOM_READMORE_TEXT_LABEL" description="MOD_XPERTTABS_FIELD_CUSTOM_READMORE_TEXT_DESC" />
-            </fieldset>
-
-            <fieldset name="ANIMATION_STYLING_SETTINGS">
-                <field name="style" type="list" default="style1" label="MOD_XPERTTABS_FIELD_STYLE_LABEL" description="MOD_XPERTTABS_FIELD_STYLE_DESC">
-                <option value="style1">Style 1</option>
-                <option value="style2">Style 2</option>
-                <option value="style3">Style 3</option>
-                <option value="style4">Style 4</option>
-                <option value="style5">Style 5</option>
-                <option value="custom">Custom</option>
+                <field name="k2_catfilter" type="radio" default="0"
+                       class="btn-group"
+                       filter="integer"
+                       label="K2_CATEGORY_FILTER"
+                       description="">
+                      <option value="0">ALL</option>
+                      <option value="1">SELECT</option>
                 </field>
 
-                <field name="transition_type" type="list" default="fade" label="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_LABEL" description="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_DESC">
+                <field name="k2_catid" type="categoriesmultiple" default=""
+                       label="K2_CATEGORIES"
+                       description="K2_CATEGORIES_DESC"/>
+
+                <field name="k2_get_children" type="radio" default="1"
+                       class="btn-group"
+                       filter="integer"
+                       label="K2_CHILDREN_CATEGORIES"
+                       description="">
+                    <option value="1">Yes</option>
+                    <option value="0">No</option>
+                </field>
+
+                <field name="k2_items_ordering" type="list" default=""
+                       label="K2_ITEM_ORDERING"
+                       description="">
+                    <option value="">K2_DEFAULT</option>
+                    <option value="date">K2_OLDEST_FIRST</option>
+                    <option value="rdate">K2_MOST_RECENT_FIRST</option>
+                    <option value="publishUp">K2_RECENTLY_PUBLISHED</option>
+                    <option value="alpha">K2_TITLE_ALPHABETICAL</option>
+                    <option value="ralpha">K2_TITLE_REVERSEALPHABETICAL</option>
+                    <option value="order">K2_ORDERING</option>
+                    <option value="rorder">K2_ORDERING_REVERSE</option>
+                    <option value="hits">K2_MOST_POPULAR</option>
+                    <option value="best">K2_HIGHEST_RATED</option>
+                    <option value="comments">K2_MOST_COMMENTED</option>
+                    <option value="modified">K2_LATEST_MODIFIED</option>
+                    <option value="rand">K2_RANDOM_ORDERING</option>
+                </field>
+
+                <field name="k2_featured_items" type="list" default="1"
+                       label="K2_FEATURED_ITEMS"
+                       description="">
+                    <option value="0">K2_HIDE</option>
+                    <option value="1">K2_SHOW</option>
+                    <option value="2">K2_SHOW_ONLY_FEATURED_ITEMS</option>
+                </field>
+
+                <field name="k2_popularity_range" type="list" default=""
+                       label="K2_TIME_RANGE"
+                       description="K2_TIME_RANGE_DESC">
+                  <option value="">K2_ALL_TIME</option>
+                  <option value="1">K2_1_DAY</option>
+                  <option value="3">K2_3_DAYS</option>
+                  <option value="7">K2_1_WEEK</option>
+                  <option value="15">K2_2_WEEKS</option>
+                  <option value="30">K2_1_MONTH</option>
+                  <option value="180">K2_6_MONTHS</option>
+                </field>
+
+            </fieldset>
+
+            <fieldset name="MODULE">
+                <field name="modules" type="modules"
+                       multiple="multiple"
+                       class="chzn-select"
+                       label="MOD_XPERTTABS_FIELD_MODULES_LABEL"
+                       description="MOD_XPERTTABS_FIELD_MODULES_DESC" />
+            </fieldset>
+
+            <fieldset name="INTERFACE_SETTINGS">
+
+                <field name="style" type="list"
+                       default="style1"
+                       label="MOD_XPERTTABS_FIELD_STYLE_LABEL"
+                       description="MOD_XPERTTABS_FIELD_STYLE_DESC">
+                    <option value="style1">Style 1</option>
+                    <option value="style2">Style 2</option>
+                    <option value="style3">Style 3</option>
+                    <option value="style4">Style 4</option>
+                    <option value="style5">Style 5</option>
+                    <option value="custom">Custom</option>
+                </field>
+
+                <field name="transition_type" type="list"
+                       default="fade"
+                       label="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_LABEL"
+                       description="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_DESC">
                     <option value="default">Plain</option>
-                    <option value="fade">Fading</option>
-                    <option value="slide">Scrolling</option>
+                    <option value="fade">Fade</option>
+                    <option value="slide">Scroll</option>
+                    <!--<option value="horizontal">Horizontal</option>-->
                 </field>
 
-                <field name="fadein_speed" type="text" default="0" label="MOD_XPERTTABS_FIELD_FADEIN_SPEED_LABEL" description="MOD_XPERTTABS_FIELD_FADEIN_SPEED_DESC" />
+                <field name="fadein_speed" type="text"
+                       default="0"
+                       label="MOD_XPERTTABS_FIELD_FADEIN_SPEED_LABEL"
+                       description="MOD_XPERTTABS_FIELD_FADEIN_SPEED_DESC" />
 
-                <field name="fadeout_speed" type="text" default="400" label="MOD_XPERTTABS_FIELD_FADEOUT_SPEED_LABEL" description="MOD_XPERTTABS_FIELD_FADEOUT_SPEED_DESC" />
+                <field name="fadeout_speed" type="text"
+                       default="400"
+                       label="MOD_XPERTTABS_FIELD_FADEOUT_SPEED_LABEL"
+                       description="MOD_XPERTTABS_FIELD_FADEOUT_SPEED_DESC" />
 
-                <field name="auto_play" type="radio" default="0" label="MOD_XPERTTABS_FIELD_AUTOPLAY_LABEL" description="MOD_XPERTTABS_FIELD_AUTOPLAY_DESC">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
+                <field name="auto_play" type="radio"
+                       default="0"
+                       class="btn-group"
+                       label="MOD_XPERTTABS_FIELD_AUTOPLAY_LABEL"
+                       description="MOD_XPERTTABS_FIELD_AUTOPLAY_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
                 </field>
 
-                <field name="auto_pause" type="radio" default="1" label="MOD_XPERTTABS_FIELD_AUTOPAUSE_LABEL" description="MOD_XPERTTABS_FIELD_AUTOPAUSE_DESC">
-                    <option value="1">Yes</option>
-                    <option value="0">No</option>
+                <field name="auto_pause" type="radio"
+                       default="1"
+                       class="btn-group"
+                       label="MOD_XPERTTABS_FIELD_AUTOPAUSE_LABEL"
+                       description="MOD_XPERTTABS_FIELD_AUTOPAUSE_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
                 </field>
+
+
             </fieldset>
+
 
             <fieldset name="ADVANCE">
-                <field name="moduleclass_sfx" type="text" default="" label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL" description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
+                <field name="moduleclass_sfx" type="text"
+                       default=""
+                       label="COM_MODULES_FIELD_MODULECLASS_SFX_LABEL"
+                       description="COM_MODULES_FIELD_MODULECLASS_SFX_DESC" />
 
-                <field name="load_jquery" type="list" default="1" label="MOD_XPERTTABS_FIELD_LOAD_JQUERY_LABEL" description="MOD_XPERTTABS_FIELD_LOAD_JQUERY_DESC">
-                    <option value="1">Enable</option>
-                    <option value="0">Disable</option>
+                <field name="auto_module_id" type="radio" default="1"
+                       label="AUTO_MODULE_ID"
+                       description="AUTO_MODULE_ID_DESC"
+                       class="btn-group" filter="integer">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
                 </field>
 
-                <field name="jquery_source" type="list" default="local" label="MOD_XPERTTABS_FIELD_JQUERY_SOURCE_LABEL" description="MOD_XPERTTABS_FIELD_JQUERY_SOURCE_DESC">
+                <field name="module_unique_id" type="text" default="xs_1" label="MODULE_UNIQUE_ID" description="MODULE_UNIQUE_ID_DESC" />
+
+                <field name="load_jquery" type="radio"
+                       default="1"
+                       class="btn-group"
+                       label="MOD_XPERTTABS_FIELD_LOAD_JQUERY_LABEL"
+                       description="MOD_XPERTTABS_FIELD_LOAD_JQUERY_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="jquery_source" type="list"
+                       default="local"
+                       label="MOD_XPERTTABS_FIELD_JQUERY_SOURCE_LABEL"
+                       description="MOD_XPERTTABS_FIELD_JQUERY_SOURCE_DESC">
                     <option value="local">From Module Core</option>
                     <option value="google_cdn">From Google CDN</option>
                 </field>
@@ -142,6 +304,10 @@
 
                 <field name="cache_time" type="text" default="900" label="Cache Time" description="The time before the module is recached" />
                 
+            </fieldset>
+
+            <fieldset name="DOCUMENTATION_SUPPORT">
+                <field name="docsupport" type="doc" support="true" link="true" title="IMPORTANT" message="DOC_SUPPORT_MESSAGE" />
             </fieldset>
         </fields>
     </config>

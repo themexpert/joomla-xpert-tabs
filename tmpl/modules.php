@@ -7,7 +7,7 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
  *
  */
-$count = count($list);
+$count = count($items);
 
 $tabs = $params->get('count',3);
 $width = ($params->get('width') == NULL OR $params->get('width') == 0 OR $params->get('width') == 'auto')? 'auto': $params->get('width').'px';
@@ -16,7 +16,7 @@ $tabs_position = $params->get('tabs_position','top');
 if(intval($tabs) > $count) $tabs = $count;
 elseif(intval($tabs) == 0) $tabs = $count;
 
-$tabs_title = modXpertTabsHelper::generateTabs($tabs,$list,$params);
+$tabs_title = modXpertTabsHelper::generateTabs($tabs,$items,$params);
 ?>
 
 <!--Xpert Tabs by ThemeXpert(www.themexpert.com)- Start-->
@@ -25,11 +25,11 @@ $tabs_title = modXpertTabsHelper::generateTabs($tabs,$list,$params);
 
         <div id="<?php echo $module_id;?>-pans"  class="xt-pans">
             <?php
-                if ($tabs == 0) $tabs = count($list);
+                if ($tabs == 0) $tabs = count($items);
                 for($i=0; $i<$tabs; $i++){
-                    if($list[$i]->content != NULL){
+                    if($items[$i]->content != NULL){
                         echo "<div class='xt-pane'>\n";
-                            echo $list[$i]->content;
+                            echo $items[$i]->content;
                         echo "</div>\n";
                     }
                 }
