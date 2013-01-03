@@ -7,38 +7,36 @@
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
  *
  */
-$count = count($items);
 
-$tabs = $params->get('count',3);
-$width = ($params->get('width') == NULL OR $params->get('width') == 0 OR $params->get('width') == 'auto')? 'auto': $params->get('width').'px';
-$tabs_position = $params->get('tabs_position','top');
-
-if(intval($tabs) > $count) $tabs = $count;
-elseif(intval($tabs) == 0) $tabs = $count;
-
-$tabs_title = modXpertTabsHelper::generateTabs($tabs,$items,$params);
 ?>
-
 <!--Xpert Tabs by ThemeXpert(www.themexpert.com)- Start-->
-    <div id="<?php echo $module_id;?>" class="xt-wrapper <?php echo $params->get('style','style1');?>" style="width:<?php echo $width;?>">
+    <div id="<?php echo $module_id;?>" class="xt-wrapper <?php echo $params->get('style','style1');?>">
+
         <?php if($tabs_position == 'top') echo $tabs_title;?>
 
-        <div id="<?php echo $module_id;?>-pans"  class="xt-pans">
-            <?php
-                if ($tabs == 0) $tabs = count($items);
-                for($i=0; $i<$tabs; $i++){
-                    if($items[$i]->content != NULL){
-                        echo "<div class='xt-pane'>\n";
-                            echo $items[$i]->content;
-                        echo "</div>\n";
-                    }
-                }
+        <a class="xt-next" style="display:none;"></a>
+        <a class="xt-prev" style="display:none;"></a>
 
-                ?>
+        <div id="<?php echo $module_id;?>"  class="xt-pans" style="height:<?php echo $height;?>">
+
+            <div class="xt-items">
+                <?php
+                    if ($tabs == 0) $tabs = count($items);
+                    for($i=0; $i<$tabs; $i++){
+                        if($items[$i]->content != NULL){
+                            echo "<div class='xt-pane'>\n";
+                                echo "<div class='xt-pane-in'>\n";
+                                    echo $items[$i]->content;
+                                echo "</div>\n";
+                            echo "</div>\n";
+                        }
+                    }
+
+                    ?>
+            </div>
         </div>
 
         <?php if($tabs_position == 'bottom') echo $tabs_title;?>
 
-
     </div>
-    <!--Xpert Tabs by ThemeXpert- End-->
+<!--Xpert Tabs by ThemeXpert- End-->

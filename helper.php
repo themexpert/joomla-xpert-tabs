@@ -45,21 +45,30 @@ abstract class modXpertTabsHelper
         $js = "
             jQuery.noConflict();
             jQuery(document).ready(function(){
-                jQuery('#{$module_id} .xt-nav ul').tabs('#{$module_id}-pans > .xt-pane',{
-                    effect: {$effect},
-                    fadeInSpeed: {$fadein_speed},
-                    fadeOutSpeed: {$fadeout_speed},
-                    {$rotate}
-                    event: {$event}
-                }){$scroll};
+                jQuery('#{$module_id}').scrollable({
+                    items : '.xt-items',
+                    next: '.xt-next',
+                    prev: '.xt-prev'
+                }).navigator({
+                        navi: '.xt-nav',
+                        naviItem: 'a',
+                        activeClass: 'current'
+                });
             });
         ";
         $doc->addScriptDeclaration($js);
 
-        if(!defined('XPERT_TABS')){
+        if( !defined('XPERT_SCROLLER'))
+        {
             //add tab engine js file
-            $doc->addScript(JURI::root(true).'/modules/mod_xperttabs/assets/js/xperttabs.js');
-            define('XPERT_TABS',1);
+            $doc->addScript( JURI::root(true).'/modules/mod_xperttabs/assets/js/xpertscroller.js' );
+            define('XPERT_SCROLLER', 1);
+        }
+
+        if(!defined('XPERT_TABS'))
+        {
+            $doc->addScript(JURI::root(true).'/modules/mod_xperttabs/assets/js/script.js');
+            define('XPERT_TABS', 1);
         }
     }
 
@@ -68,6 +77,7 @@ abstract class modXpertTabsHelper
         $title_type = $params->get('tabs_title_type');
         $tab_scrollable = $params->get('tabs_scrollable');
         $position = $params->get('tabs_position','top');
+        $html = '';
 
         if($title_type == 'custom'){
             $titles = explode(",",$params->get('tabs_title_custom'));
@@ -75,20 +85,24 @@ abstract class modXpertTabsHelper
 
         if($tabs == 0 OR $tabs>count($list)) $tabs = count($list);
 
-        $html  = "<div class='xt-nav $position'>";
+        //$html  = "<div class=''>";
         if($params->get('tabs_scrollable')) $html .= "<a class='backward'>backward</a>\n";
-        $html .= "<ul>";
+        $html .= '<ul class="xt-nav '. $position .' navi">';
 
         for($i=0; $i<$tabs; $i++){
             $class = '';
+            $aclass = '';
             if($list[$i]->introtext != NULL){
-                if(!$i) $class= 'first';
+                if(!$i){
+                    $class  = 'first';
+                    $aclass = 'current';
+                }
                 if($i == $tabs - 1) $class= 'last';
 
                 if($title_type == 'custom') $title = (isset($titles[$i])) ? $titles[$i] : '';
                 else $title = $list[$i]->title;
 
-                $html .= "<li class='$class' ><a href=\"#\"><span>$title</span></a></li>\n";
+                $html .= "<li class='$class' ><a class=\"{$aclass}\" href=\"#\"><span>$title</span></a></li>\n";
 
             }
 
@@ -96,7 +110,7 @@ abstract class modXpertTabsHelper
         $html .= "</ul>\n";
         if($params->get('tabs_scrollable')) $html .= "<a class='forward'>forward</a>\n";
         $html .= "<div class='clear'></div>";
-        $html .= "</div> <!--xt-nav end-->\n";
+        //$html .= "</div> <!--xt-nav end-->\n";
 
         return $html;
         

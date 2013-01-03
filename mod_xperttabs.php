@@ -45,4 +45,14 @@ modXpertTabsHelper::loadScripts($module, $params);
 
 $layout = ( $content_source == 'module' ) ? 'modules' : 'default';
 
+// Assign some options for global use
+$height         = $params->get('height');
+$tabs_position  = $params->get('tabs_position','top');
+$count          = count($items);
+$tabs           = $params->get('count',3);
+$tabs_title     = modXpertTabsHelper::generateTabs($tabs,$items,$params);
+
+if(intval($tabs) > $count) $tabs = $count;
+elseif(intval($tabs) == 0) $tabs = $count;
+
 require JModuleHelper::getLayoutPath($module->module, $params->get('layout', $layout));
