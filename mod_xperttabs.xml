@@ -93,6 +93,27 @@
                    label="INTRO_TEXT_LIMIT"
                    description="INTRO_TEXT_LIMIT_DESC" />
 
+               <field name="animation_settings" type="spacer" label="Style and animation" description="" />
+                <field name="style" type="list"
+                       default="style1"
+                       label="MOD_XPERTTABS_FIELD_STYLE_LABEL"
+                       description="MOD_XPERTTABS_FIELD_STYLE_DESC">
+                    <option value="style1">Style 1</option>
+                    <option value="style2">Style 2</option>
+                    <option value="style3">Style 3</option>
+                    <option value="style4">Style 4</option>
+                    <option value="style5">Style 5</option>
+                    <option value="custom">Custom</option>
+                </field>
+
+                <field name="transition" type="list"
+                       default="fade"
+                       label="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_LABEL"
+                       description="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_DESC">
+                    <option value="fade">Fade</option>
+                    <option value="fade-slide">Fade and Slide</option>
+                </field>
+
             </fieldset>
 
             <fieldset name="JOOMLA">
@@ -208,62 +229,6 @@
                        label="MOD_XPERTTABS_FIELD_MODULES_LABEL"
                        description="MOD_XPERTTABS_FIELD_MODULES_DESC" />
             </fieldset>
-
-            <fieldset name="INTERFACE_SETTINGS">
-
-                <field name="style" type="list"
-                       default="style1"
-                       label="MOD_XPERTTABS_FIELD_STYLE_LABEL"
-                       description="MOD_XPERTTABS_FIELD_STYLE_DESC">
-                    <option value="style1">Style 1</option>
-                    <option value="style2">Style 2</option>
-                    <option value="style3">Style 3</option>
-                    <option value="style4">Style 4</option>
-                    <option value="style5">Style 5</option>
-                    <option value="custom">Custom</option>
-                </field>
-
-                <field name="transition_type" type="list"
-                       default="fade"
-                       label="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_LABEL"
-                       description="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_DESC">
-                    <option value="default">Plain</option>
-                    <option value="fade">Fade</option>
-                    <option value="slide">Scroll</option>
-                    <!--<option value="horizontal">Horizontal</option>-->
-                </field>
-
-                <field name="fadein_speed" type="text"
-                       default="0"
-                       label="MOD_XPERTTABS_FIELD_FADEIN_SPEED_LABEL"
-                       description="MOD_XPERTTABS_FIELD_FADEIN_SPEED_DESC" />
-
-                <field name="fadeout_speed" type="text"
-                       default="400"
-                       label="MOD_XPERTTABS_FIELD_FADEOUT_SPEED_LABEL"
-                       description="MOD_XPERTTABS_FIELD_FADEOUT_SPEED_DESC" />
-
-                <field name="auto_play" type="radio"
-                       default="0"
-                       class="btn-group"
-                       label="MOD_XPERTTABS_FIELD_AUTOPLAY_LABEL"
-                       description="MOD_XPERTTABS_FIELD_AUTOPLAY_DESC">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
-
-                <field name="auto_pause" type="radio"
-                       default="1"
-                       class="btn-group"
-                       label="MOD_XPERTTABS_FIELD_AUTOPAUSE_LABEL"
-                       description="MOD_XPERTTABS_FIELD_AUTOPAUSE_DESC">
-                    <option value="1">JYES</option>
-                    <option value="0">JNO</option>
-                </field>
-
-
-            </fieldset>
-
 
             <fieldset name="ADVANCE">
                 <field name="moduleclass_sfx" type="text"

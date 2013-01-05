@@ -18,9 +18,9 @@
     <?php for($i=0; $i<$tabs; $i++): ?>
         <?php if($items[$i]->content != NULL) :?>
 
-            <?php $class = ($i == 0) ? 'active in' : '';?>
+            <?php $class = ($i == 0) ? ' active in' : '';?>
 
-            <div class="txtabs-pane fade <?php echo $class; ?>" id="txtabs-<?php echo $i; ?>">
+            <div class="txtabs-pane<?php echo $class; ?> <?php echo $transition; ?> clearfix" id="txtabs-<?php echo $i; ?>">
                 <div class="txtabs-pane-in">
                     <?php echo $items[$i]->content; ?>
                 </div>
