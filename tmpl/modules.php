@@ -10,33 +10,26 @@
 
 ?>
 <!--Xpert Tabs by ThemeXpert(www.themexpert.com)- Start-->
-    <div id="<?php echo $module_id;?>" class="xt-wrapper <?php echo $params->get('style','style1');?>">
+<div id="<?php echo $module_id;?>" class="txtabs-content <?php echo $params->get('style','style1');?>">
 
-        <?php if($tabs_position == 'top') echo $tabs_title;?>
+    <?php if($tabs_position == 'top') echo $tabs_title;?>
 
-        <a class="xt-next" style="display:none;"></a>
-        <a class="xt-prev" style="display:none;"></a>
+    <div class="txtabs-content">
+    <?php for($i=0; $i<$tabs; $i++): ?>
+        <?php if($items[$i]->content != NULL) :?>
 
-        <div id="<?php echo $module_id;?>"  class="xt-pans" style="height:<?php echo $height;?>">
+            <?php $class = ($i == 0) ? 'active in' : '';?>
 
-            <div class="xt-items">
-                <?php
-                    if ($tabs == 0) $tabs = count($items);
-                    for($i=0; $i<$tabs; $i++){
-                        if($items[$i]->content != NULL){
-                            echo "<div class='xt-pane'>\n";
-                                echo "<div class='xt-pane-in'>\n";
-                                    echo $items[$i]->content;
-                                echo "</div>\n";
-                            echo "</div>\n";
-                        }
-                    }
-
-                    ?>
+            <div class="txtabs-pane fade <?php echo $class; ?>" id="txtabs-<?php echo $i; ?>">
+                <div class="txtabs-pane-in">
+                    <?php echo $items[$i]->content; ?>
+                </div>
             </div>
-        </div>
-
-        <?php if($tabs_position == 'bottom') echo $tabs_title;?>
-
+        <?php endif;?>
+    <?php endfor; ?>
     </div>
+
+    <?php if($tabs_position == 'bottom') echo $tabs_title;?>
+
+</div>
 <!--Xpert Tabs by ThemeXpert- End-->

@@ -58,16 +58,16 @@ abstract class modXpertTabsHelper
         ";
         $doc->addScriptDeclaration($js);
 
-        if( !defined('XPERT_SCROLLER'))
+       /* if( !defined('XPERT_SCROLLER'))
         {
             //add tab engine js file
             $doc->addScript( JURI::root(true).'/modules/mod_xperttabs/assets/js/xpertscroller.js' );
             define('XPERT_SCROLLER', 1);
-        }
+        }*/
 
         if(!defined('XPERT_TABS'))
         {
-            $doc->addScript(JURI::root(true).'/modules/mod_xperttabs/assets/js/script.js');
+            $doc->addScript(JURI::root(true).'/modules/mod_xperttabs/assets/js/tabs.js');
             define('XPERT_TABS', 1);
         }
     }
@@ -75,44 +75,45 @@ abstract class modXpertTabsHelper
 
     public static function generateTabs($tabs, $list, $params){
         $title_type = $params->get('tabs_title_type');
-        $tab_scrollable = $params->get('tabs_scrollable');
         $position = $params->get('tabs_position','top');
-        $html = '';
+        $html = array();
 
         if($title_type == 'custom'){
-            $titles = explode(",",$params->get('tabs_title_custom'));
+            $titles = explode(",", $params->get('tabs_title_custom'));
         }
 
         if($tabs == 0 OR $tabs>count($list)) $tabs = count($list);
 
-        //$html  = "<div class=''>";
-        if($params->get('tabs_scrollable')) $html .= "<a class='backward'>backward</a>\n";
-        $html .= '<ul class="xt-nav '. $position .' navi">';
+        $html[] = '<ul class="xt-nav '. $position .'">';
 
         for($i=0; $i<$tabs; $i++){
-            $class = '';
-            $aclass = '';
-            if($list[$i]->introtext != NULL){
+
+            if($list[$i]->introtext != NULL)
+            {
+                // li and a classes
+                $class = '';
+                $aclass = '';
+
                 if(!$i){
                     $class  = 'first';
-                    $aclass = 'current';
+                    $aclass = 'active';
                 }
                 if($i == $tabs - 1) $class= 'last';
 
                 if($title_type == 'custom') $title = (isset($titles[$i])) ? $titles[$i] : '';
                 else $title = $list[$i]->title;
 
-                $html .= "<li class='$class' ><a class=\"{$aclass}\" href=\"#\"><span>$title</span></a></li>\n";
-
+                $html[] = '<li class="'. $class .'">';
+                    $html[] = '<a class="'. $aclass .'" data-toggle="tab" data-target="#txtabs-'.$i.'">';
+                        $html[] = "<span>$title</span>";
+                    $html[] = '</a>';
+                $html[] = '</li>';
             }
 
         }
-        $html .= "</ul>\n";
-        if($params->get('tabs_scrollable')) $html .= "<a class='forward'>forward</a>\n";
-        $html .= "<div class='clear'></div>";
-        //$html .= "</div> <!--xt-nav end-->\n";
+        $html[] = '</ul>';
 
-        return $html;
+        return implode("\n", $html);
         
     }
 

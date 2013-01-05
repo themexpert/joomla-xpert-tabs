@@ -46,7 +46,7 @@ modXpertTabsHelper::loadScripts($module, $params);
 $layout = ( $content_source == 'module' ) ? 'modules' : 'default';
 
 // Assign some options for global use
-$height         = $params->get('height');
+$height         = (int) $params->get('height') . 'px';
 $tabs_position  = $params->get('tabs_position','top');
 $count          = count($items);
 $tabs           = $params->get('count',3);

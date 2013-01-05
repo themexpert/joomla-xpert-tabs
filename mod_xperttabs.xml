@@ -38,7 +38,8 @@
                 <field name="tab_settings" type="spacer" label="Tab settings" description="" />
 
                 <field name="height" type="text"
-                       default="400px"
+                       default="400"
+                       append= "px"
                        label="MOD_XPERTTABS_FIELD_HEIGHT_LABEL"
                        description="MOD_XPERTTABS_FIELD_HEIGHT_DESC" />
 

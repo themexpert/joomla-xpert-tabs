@@ -11,25 +11,13 @@
 /*Clear Float*/
 .clear {clear: both;display: block;overflow: hidden;visibility: hidden;width: 0;height: 0;}
 
-.xt-items{
-    width: 20000em;
-    position: absolute;
-    clear: both;
-    margin: 0;
-    padding: 0;
-    border: 0;
-}
-.xt-pans{ overflow: hidden; position: relative; }
-.xt-pane{ float: left; display: block;}
-.xt-pane-in{ padding: 15px; }
 /*Basic Tab Settings*/
 .xt-nav{list-style:none;margin:0;padding:0;height:32px;}
 .xt-nav li{float:left;padding: 0;margin: 0}
 .xt-nav li a{display:block;padding:6px 10px;text-decoration:none;font-weight:bold; width: auto; height: 100%; background-image: none; font-size: 13px;}
+.txtabs-content > .txtabs-pane{ visibility: hidden; height: 0; }
+.txtabs-content > .active{ visibility: visible; height: auto;}
 
-
-/*Prev and Next button*/
-.style1 .backward, .style1 .forward{ float:left;}
 
 /*Tab Styling*/
 .xt-wrapper.style1{border:1px solid #DCDCDC}
