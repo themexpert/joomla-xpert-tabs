@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Xpert Tabs
- * @version 3.0
+ * @version ##VERSION##
  * @author ThemeXpert http://www.themexpert.com
  * @copyright Copyright (C) 2009 - 2011 ThemeXpert
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -43,9 +43,7 @@ XEFUtility::loadStyleSheet($module, $params);
 
 modXpertTabsHelper::loadScripts($module, $params);
 
-$layout = ( $content_source == 'module' ) ? 'modules' : 'default';
-
-// Assign some options for global use
+// Assign options to variables for use in view
 $height         = (int) $params->get('height') . 'px';
 $tabs_position  = $params->get('tabs_position','top');
 $count          = count($items);
@@ -56,4 +54,4 @@ $transition     = $params->get('transition', 'fade');
 if(intval($tabs) > $count) $tabs = $count;
 elseif(intval($tabs) == 0) $tabs = $count;
 
-require JModuleHelper::getLayoutPath($module->module, $params->get('layout', $layout));
+require JModuleHelper::getLayoutPath( $module->module, $params->get('layout', 'default') );

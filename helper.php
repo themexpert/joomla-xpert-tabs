@@ -17,54 +17,6 @@ abstract class modXpertTabsHelper
     public static function loadScripts($module, $params){
         $doc = JFactory::getDocument();
 
-        // Set moduleid
-        $module_id = XEFUtility::getModuleId($module, $params);
-
-        // Load jQuery
-        XEFUtility::addjQuery($module, $params);
-        
-        $effect         = "'". $params->get('transition_type','default'). "'";
-        $fadein_speed   = (int)$params->get('fadein_speed',500);
-        $fadeout_speed  = (int)$params->get('fadeout_speed',0);
-        $auto_play      = ( (int)$params->get('auto_play',0) ) ? 'true' : 'false';
-        $auto_pause     = ( (int)$params->get('auto_pause',1) ) ? 'true' : 'false';
-        $event          = "'". $params->get('tabs_interaction','click'). "'";
-
-        //scrollable js settings.
-        if($params->get('tabs_scrollable')){
-            $scroll = ".slideshow({autoplay: {$auto_play},autopause: {$auto_pause}})";
-        }else{
-            $scroll = '';
-        }
-        if((int)$auto_play){
-            $rotate = 'rotate: true,';
-        }else{
-            $rotate = '';
-        }
-
-        $js = "
-            jQuery.noConflict();
-            jQuery(document).ready(function(){
-                jQuery('#{$module_id}').scrollable({
-                    items : '.xt-items',
-                    next: '.xt-next',
-                    prev: '.xt-prev'
-                }).navigator({
-                        navi: '.xt-nav',
-                        naviItem: 'a',
-                        activeClass: 'current'
-                });
-            });
-        ";
-        $doc->addScriptDeclaration($js);
-
-       /* if( !defined('XPERT_SCROLLER'))
-        {
-            //add tab engine js file
-            $doc->addScript( JURI::root(true).'/modules/mod_xperttabs/assets/js/xpertscroller.js' );
-            define('XPERT_SCROLLER', 1);
-        }*/
-
         if(!defined('XPERT_TABS'))
         {
             $doc->addScript(JURI::root(true).'/modules/mod_xperttabs/assets/js/tabs.js');
