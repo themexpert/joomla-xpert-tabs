@@ -25,7 +25,10 @@ abstract class modXpertTabsHelper
     }
 
 
-    public static function generateTabs($tabs, $list, $params){
+    public static function generateTabs($tabs, $list, $params, $module)
+    {
+        $module_id = XEFUtility::getModuleId($module, $params);
+
         $title_type = $params->get('tabs_title_type');
         $position = $params->get('tabs_position','top');
         $html = array();
@@ -56,7 +59,7 @@ abstract class modXpertTabsHelper
                 else $title = $list[$i]->title;
 
                 $html[] = '<li class="'. $class .'">';
-                    $html[] = '<a data-toggle="tab" data-target="#txtabs-'.$i.'">';
+                    $html[] = '<a data-toggle="tab" data-target="#'. $module_id . '-'. $i.'">';
                         $html[] = "<span>$title</span>";
                     $html[] = '</a>';
                 $html[] = '</li>';

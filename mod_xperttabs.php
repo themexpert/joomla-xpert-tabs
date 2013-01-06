@@ -48,7 +48,7 @@ $height         = (int) $params->get('height') . 'px';
 $tabs_position  = $params->get('tabs_position','top');
 $count          = count($items);
 $tabs           = $params->get('count',3);
-$tabs_title     = modXpertTabsHelper::generateTabs($tabs,$items,$params);
+$tabs_title     = modXpertTabsHelper::generateTabs($tabs,$items,$params, $module);
 $transition     = $params->get('transition', 'fade');
 
 if(intval($tabs) > $count) $tabs = $count;
