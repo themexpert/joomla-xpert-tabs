@@ -12,9 +12,9 @@
 @import "common.css";
 
 /*Tab Styling*/
-.txtabs-nav { border-bottom: 3px solid #CF8080; padding-bottom: 1px; }
-.txtabs-nav a { color: #6a6a6a; border-top: 1px solid #eee; border-right: 1px solid #eee;}
-.txtabs-nav li.first a { border-left:1px solid #eee; }
-.txtabs-nav li:hover a { background: #f5f5f5; }
-.txtabs-nav li.active a { background-color:#CF8080;color:#fff; }
+.style3 .txtabs-nav { border-bottom: 3px solid #CF8080; padding-bottom: 1px; }
+.style3 .txtabs-nav a { color: #6a6a6a; border-top: 1px solid #eee; border-right: 1px solid #eee;}
+.style3 .txtabs-nav li.first a { border-left:1px solid #eee; }
+.style3 .txtabs-nav li:hover a { background: #f5f5f5; }
+.style3 .txtabs-nav li.active a { background-color:#CF8080;color:#fff; }
 

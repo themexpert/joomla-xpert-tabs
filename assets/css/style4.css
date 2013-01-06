@@ -12,13 +12,13 @@
 @import "common.css";
 
 /*Tab Styling*/
-.txtabs-nav{ padding-left: 10px; padding-right: 10px; }
-.txtabs-nav.top{ border-bottom:1px solid #ddd; padding-bottom: 1px; }
-.txtabs-nav.bottom{ border-top:1px solid #ddd; padding-top: 1px; }
-.txtabs-nav li a{ color: #a0a0a0; }
-.txtabs-nav a:hover{ color: #222 }
+.style4 .txtabs-nav{ padding-left: 10px; padding-right: 10px; }
+.style4 .txtabs-nav.top{ border-bottom:1px solid #ddd; padding-bottom: 1px; }
+.style4 .txtabs-nav.bottom{ border-top:1px solid #ddd; padding-top: 1px; }
+.style4 .txtabs-nav li a{ color: #a0a0a0; }
+.style4 .txtabs-nav a:hover{ color: #222 }
 
-.txtabs-nav.top li.active a{
+.style4 .txtabs-nav.top li.active a{
     color: #222;
     border-width:1px;
     border-style:solid;
@@ -26,7 +26,7 @@
     -moz-border-radius: 5px 5px 0 0;
     -webkit-border-radius: 5px 5px 0 0;
 }
-.txtabs-nav.bottom li.active a{
+.style4 .txtabs-nav.bottom li.active a{
     color: #222;
     border-width:1px;
     border-style:solid;

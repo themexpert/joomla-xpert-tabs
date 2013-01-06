@@ -14,7 +14,7 @@
 /*Tab Styling*/
 .txtabs-wrap.style1{border:1px solid #DCDCDC; background: #fff;}
 
-.txtabs-nav{
+.style1 .txtabs-nav{
     background: #f9f9f9; /* Old browsers */
     background: -moz-linear-gradient(top, #f9f9f9 0%, #f7f7f7 34%, #ffffff 100%); /* FF3.6+ */
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#f9f9f9), color-stop(34%,#f7f7f7), color-stop(100%,#ffffff)); /* Chrome,Safari4+ */
@@ -24,17 +24,17 @@
     filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#F9F9F9', endColorstr='#ffffff',GradientType=0 ); /* IE6-9 */
     background: linear-gradient(top, #f9f9f9 0%,#f7f7f7 34%,#ffffff 100%); /* W3C */
 }
-.txtabs-nav.top{ border-bottom:1px solid #ddd; }
-.txtabs-nav.bottom{ border-top:1px solid #ddd; }
-.txtabs-nav li a,
-.txtabs-nav li.last.active a{
+.style1 .txtabs-nav.top{ border-bottom:1px solid #ddd; }
+.style1 .txtabs-nav.bottom{ border-top:1px solid #ddd; }
+.style1 .txtabs-nav li a,
+.style1 .txtabs-nav li.last.active a{
     border-right:1px solid #DCDCDC;
     color: #666;
 }
-.txtabs-nav li.last a{border-right:none}
-.txtabs-nav a:hover{color: #222}
+.style1 .txtabs-nav li.last a{border-right:none}
+.style1 .txtabs-nav a:hover{color: #222}
 
-.txtabs-nav.top li.active{
+.style1 .txtabs-nav.top li.active{
     color: #222;
     background: #eaeaea; /* Old browsers */
     background: -moz-linear-gradient(top, #eaeaea 0%, #f6f6f6 45%, #ffffff 100%); /* FF3.6+ */
@@ -46,7 +46,7 @@
     background: linear-gradient(top, #eaeaea 0%,#f6f6f6 45%,#ffffff 100%); /* W3C */
 }
 
-.txtabs-nav.bottom li.active{
+.style1 .txtabs-nav.bottom li.active{
     color: #222;
     background: #eaeaea; /* Old browsers */
     background: -moz-linear-gradient(bottom, #eaeaea 0%, #f6f6f6 45%, #ffffff 100%); /* FF3.6+ */
