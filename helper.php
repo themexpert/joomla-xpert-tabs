@@ -36,7 +36,7 @@ abstract class modXpertTabsHelper
 
         if($tabs == 0 OR $tabs>count($list)) $tabs = count($list);
 
-        $html[] = '<ul class="xt-nav '. $position .'">';
+        $html[] = '<ul class="txtabs-nav '. $position .'">';
 
         for($i=0; $i<$tabs; $i++){
 
@@ -47,8 +47,8 @@ abstract class modXpertTabsHelper
                 $aclass = '';
 
                 if(!$i){
-                    $class  = 'first';
-                    $aclass = 'active';
+                    $class  = 'first active';
+                    //$aclass = 'active';
                 }
                 if($i == $tabs - 1) $class= 'last';
 
@@ -56,7 +56,7 @@ abstract class modXpertTabsHelper
                 else $title = $list[$i]->title;
 
                 $html[] = '<li class="'. $class .'">';
-                    $html[] = '<a class="'. $aclass .'" data-toggle="tab" data-target="#txtabs-'.$i.'">';
+                    $html[] = '<a data-toggle="tab" data-target="#txtabs-'.$i.'">';
                         $html[] = "<span>$title</span>";
                     $html[] = '</a>';
                 $html[] = '</li>';

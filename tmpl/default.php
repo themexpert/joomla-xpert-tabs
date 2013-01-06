@@ -10,7 +10,7 @@
 
 ?>
 <!--Xpert Tabs ##VERSION## by ThemeXpert(www.themexpert.com)- Start-->
-<div id="<?php echo $module_id;?>" class="txtabs-content <?php echo $params->get('style','style1');?>">
+<div id="<?php echo $module_id;?>" class="txtabs-wrap <?php echo $params->get('style','style1');?>">
 
     <?php if($tabs_position == 'top') echo $tabs_title;?>
 

@@ -2,12 +2,12 @@
 <extension type="module" version="1.7.0" client="site" method="upgrade">
     <name>Xpert Tabs</name>
     <author>ThemeXpert</author>
-    <creationDate>Aug 2011</creationDate>
+    <creationDate>#DATE##</creationDate>
     <authorEmail>support@themexpert.com</authorEmail>
     <authorUrl>http://www.themexpert.com</authorUrl>
     <copyright>(C) 2008 - 2011 ThemeXpert, LLC. All rights reserved.</copyright>
     <license>http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only</license>
-    <version>3.0</version>
+    <version>##VERSION##</version>
     <description>Xpert Tabs, Next Generation Tab Module For Joomla! designed to show section articles and modules in a pleasing format.Brought to you by ThemeXpert</description>
     
     <files>
@@ -102,8 +102,7 @@
                     <option value="style2">Style 2</option>
                     <option value="style3">Style 3</option>
                     <option value="style4">Style 4</option>
-                    <option value="style5">Style 5</option>
-                    <option value="custom">Custom</option>
+                    <option value="0">Custom</option>
                 </field>
 
                 <field name="transition" type="list"
