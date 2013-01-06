@@ -14,17 +14,26 @@
     <!--Destination build path-->
     <property name="dest" value="/Applications/MAMP/htdocs/joomla/ext_dev/builds/${type}${name}" override="true" />
 
-	<target name="build" description="Build package for release">
+    <target name="setup-properties" description="Set up version and build properties">
+
+        <!-- Initialize the build.date timestamp -->
+        <tstamp>
+            <format property="build.date" pattern="%Y-%m-%d" />
+        </tstamp>
 
         <!-- Option to include the version number in the final file names. -->
         <if>
             <not>
-                <isset property="package.version" />
+                <isset property="version" />
             </not>
             <then>
-                <property name="package.version" value="" />
+                <property name="version" value="" />
             </then>
         </if>
+
+    </target>
+
+	<target name="build" description="Build package for release" depends="setup-properties">
 
         <!-- Cleanup build area -->
         <delete dir="${dest}" />
@@ -40,11 +49,20 @@
 
         <!-- Include module files and folders except installer  -->
         <copy todir="${dest}/${type}${name}" overwrite="true">
+
             <fileset dir="${project.basedir}">
                 <include name="**" />
                 <exclude name="build.xml" />
                 <exclude name="installer.xml" />
             </fileset>
+
+            <!--Change version num and date-->
+            <filterchain>
+               <replacetokens begintoken="##" endtoken="##">
+                   <token key="DATE" value="${build.date}" />
+                   <token key="VERSION" value="${version}" />
+               </replacetokens>
+           </filterchain>
         </copy>
 
         <!-- Now pulling the installer script in build folder -->
@@ -64,7 +82,7 @@
         </if>
 
         <!--Safe dir mode-->
-        <exec command="chmod -R 775 *" dir="${dest}" />
+        <exec command="chmod -R 755 *" dir="${dest}" />
 
         <!--Zip the package-->
         <zip

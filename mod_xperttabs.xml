@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<extension type="module" version="1.7.0" client="site" method="upgrade">
+<extension type="module"
+           version="2.5"
+           client="site"
+           method="upgrade">
     <name>Xpert Tabs</name>
     <author>ThemeXpert</author>
-    <creationDate>#DATE##</creationDate>
+    <creationDate>##DATE##</creationDate>
     <authorEmail>support@themexpert.com</authorEmail>
     <authorUrl>http://www.themexpert.com</authorUrl>
     <copyright>(C) 2008 - 2011 ThemeXpert, LLC. All rights reserved.</copyright>
@@ -36,12 +39,6 @@
                        description="CONTENT_SOURCE_DESC" />
 
                 <field name="tab_settings" type="spacer" label="Tab settings" description="" />
-
-                <field name="height" type="text"
-                       default="400"
-                       append= "px"
-                       label="MOD_XPERTTABS_FIELD_HEIGHT_LABEL"
-                       description="MOD_XPERTTABS_FIELD_HEIGHT_DESC" />
 
                 <field name="count" type="text" default="5"
                        label="MOD_XPERTTABS_FIELD_COUNT_LABEL"
@@ -106,7 +103,7 @@
                 </field>
 
                 <field name="transition" type="list"
-                       default="fade"
+                       default="fade-slide"
                        label="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_LABEL"
                        description="MOD_XPERTTABS_FIELD_TRANSITION_TYPE_DESC">
                     <option value="fade">Fade</option>
