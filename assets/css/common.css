@@ -32,10 +32,10 @@
 }
 
 /*Basic Tab Settings*/
-.txtabs-nav {list-style:none;margin:0;padding:0;height:32px;}
+.txtabs-nav {list-style:none;margin:0;padding:0;}
 .txtabs-nav li{float:left;padding: 0;margin: 0}
 .txtabs-nav li a{display:block;padding:6px 10px;tetxtabs-navdecoration:none;font-weight:bold;font-size: 13px; cursor:pointer;}
-.txtabs-content{ padding: 10px; }
-.txtabs-content > .txtabs-pane{ visibility: hidden; height: 0; }
-.txtabs-content > .active{ visibility: visible; height: auto;}
+.txtabs-content{ padding: 10px; overflow:hidden;}
+.txtabs-content > .txtabs-pane{ visibility: hidden; height: 0; width:0; }
+.txtabs-content > .active{ visibility: visible; height: auto; width:100%;}
 .txtabs-content > .active .txtabs-pane-in{}

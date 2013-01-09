@@ -39,7 +39,7 @@ abstract class modXpertTabsHelper
 
         if($tabs == 0 OR $tabs>count($list)) $tabs = count($list);
 
-        $html[] = '<ul class="txtabs-nav '. $position .'">';
+        $html[] = '<ul class="txtabs-nav '. $position .' clearfix">';
 
         for($i=0; $i<$tabs; $i++){
 
