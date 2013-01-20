@@ -22,6 +22,14 @@
             <div class="txtabs-pane<?php echo $class; ?> <?php echo $transition; ?> clearfix" id="<?php echo $module_id . '-'. $i; ?>">
                 <div class="txtabs-pane-in">
                     <?php echo $items[$i]->introtext; ?>
+
+                    <?php if( $content_source != 'module' AND $params->get('readmore', 1) ) :?>
+                        <p class="txtabs-readon">
+                            <a class="btn" href="<?php echo $items[$i]->link; ?>">
+                                <span> <?php echo $params->get('readmore_label'); ?> </span>
+                            </a>
+                        </p>
+                    <?php endif; ?>
                 </div>
             </div>
 

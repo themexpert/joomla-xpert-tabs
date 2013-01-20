@@ -90,6 +90,18 @@
                    label="INTRO_TEXT_LIMIT"
                    description="INTRO_TEXT_LIMIT_DESC" />
 
+                <field name="readmore" type="radio" default="1"
+                        class="btn-group"
+                        label="READMORE_LABEL"
+                        description="READMORE_DESC">
+                    <option value="1">JYES</option>
+                    <option value="0">JNO</option>
+                </field>
+
+                <field name="readmore_label" type="text" default="Read More"
+                       label="READMORE_LABEL_LABEL"
+                        description="READMORE_LABEL_DESC"/>
+
                <field name="animation_settings" type="spacer" label="Style and animation" description="" />
                 <field name="style" type="list"
                        default="style1"
