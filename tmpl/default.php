@@ -16,17 +16,15 @@
 
     <div class="txtabs-content">
     <?php for($i=0; $i<$tabs; $i++): ?>
-        <?php if($items[$i]->content != NULL) :?>
 
             <?php $class = ($i == 0) ? ' active in' : '';?>
 
             <div class="txtabs-pane<?php echo $class; ?> <?php echo $transition; ?> clearfix" id="<?php echo $module_id . '-'. $i; ?>">
                 <div class="txtabs-pane-in">
-                    <?php echo $items[$i]->content; ?>
+                    <?php echo $items[$i]->introtext; ?>
                 </div>
             </div>
 
-        <?php endif;?>
     <?php endfor; ?>
     </div>
 

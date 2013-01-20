@@ -46,12 +46,8 @@ modXpertTabsHelper::loadScripts($module, $params);
 // Assign options to variables for use in view
 $height         = (int) $params->get('height') . 'px';
 $tabs_position  = $params->get('tabs_position','top');
-$count          = count($items);
 $tabs           = $params->get('count',3);
 $tabs_title     = modXpertTabsHelper::generateTabs($tabs,$items,$params, $module);
 $transition     = $params->get('transition', 'fade');
-
-if(intval($tabs) > $count) $tabs = $count;
-elseif(intval($tabs) == 0) $tabs = $count;
 
 require JModuleHelper::getLayoutPath( $module->module, $params->get('layout', 'default') );
