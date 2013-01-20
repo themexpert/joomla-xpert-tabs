@@ -8,6 +8,9 @@
     <!--Xpert Extension Framework Path-->
     <property name="framewrok_path" value="/Applications/MAMP/htdocs/joomla/ext_dev/libraries/xef" />
 
+    <!--Lang file path-->
+    <property name="lang_path" value="/Applications/MAMP/htdocs/joomla/ext_dev/language/en-GB" />
+
     <!--Xpert Installer Path-->
     <property name="installer_path" value="/Applications/MAMP/htdocs/joomla/ext_extra/xpertinstaller" />
 
@@ -64,6 +67,9 @@
                </replacetokens>
            </filterchain>
         </copy>
+
+        <!--Pull en-GB language file-->
+        <copy todir="${dest}/${type}${name}/language" file="${lang_path}/en-GB.${type}${name}.ini" overwrite="true" />
 
         <!-- Now pulling the installer script in build folder -->
         <copy todir="${dest}" overwrite="true">
