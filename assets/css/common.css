@@ -1,6 +1,6 @@
 /**
  * @package Xpert Tabs
- * @version ##VERSION##
+ * @version 3.3
  * @author ThemeXpert http://www.themexpert.com
  * @copyright Copyright (C) 2009 - 2011 ThemeXpert
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -35,7 +35,7 @@
 .txtabs-nav {list-style:none;margin:0;padding:0;}
 .txtabs-nav li{float:left;padding: 0;margin: 0}
 .txtabs-nav li a{display:block;padding:6px 10px;tetxtabs-navdecoration:none;font-weight:bold;font-size: 13px; cursor:pointer;}
-.txtabs-content{ padding: 10px; overflow:hidden;}
-.txtabs-content > .txtabs-pane{ visibility: hidden; height: 0; width:0; }
-.txtabs-content > .active{ visibility: visible; height: auto; width:100%;}
+.txtabs-content{ padding: 10px; overflow:hidden; position: relative; }
+.txtabs-content > .txtabs-pane{ visibility: hidden; height: 0; width:0; position: absolute; }
+.txtabs-content > .active{ visibility: visible; height: auto; width:100%; position: static;}
 .txtabs-content > .active .txtabs-pane-in{}
