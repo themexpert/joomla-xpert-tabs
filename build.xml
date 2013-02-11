@@ -48,6 +48,12 @@
             <fileset dir="${framewrok_path}">
                 <include name="**" />
             </fileset>
+            <!--Change version num and date-->
+            <filterchain>
+               <replacetokens begintoken="##" endtoken="##">
+                   <token key="DATE" value="${build.date}" />
+               </replacetokens>
+           </filterchain>
         </copy>
 
         <!-- Include module files and folders except installer  -->
