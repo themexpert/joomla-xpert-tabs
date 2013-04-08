@@ -103,7 +103,8 @@
                         description="READMORE_LABEL_DESC"/>
 
                <field name="animation_settings" type="spacer" label="Style and animation" description="" />
-                <field name="style" type="list"
+
+                <field name="mod_style" type="list"
                        default="style1"
                        label="MOD_XPERTTABS_FIELD_STYLE_LABEL"
                        description="MOD_XPERTTABS_FIELD_STYLE_DESC">
