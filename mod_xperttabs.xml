@@ -25,6 +25,11 @@
          <language tag="en-GB">en-GB.mod_xperttabs.ini</language>
     </languages>
 
+    <!-- UPDATESERVER DEFINITION -->
+    <updateservers>
+        <server type="extension" priority="1" name="Xpert Tabs Update">http://www.themexpert.com/ustreams/extensions/xperttabs.xml</server>
+    </updateservers>
+
     <config>
         <fields name="params" addfieldpath="libraries/xef/fields">
             <fieldset name="GENERAL_SETTINGS">
@@ -101,6 +106,13 @@
                 <field name="readmore_label" type="text" default="Read More"
                        label="READMORE_LABEL_LABEL"
                         description="READMORE_LABEL_DESC"/>
+
+                <field name="routing_type" type="list" default="default" label="ROUTING_BEHAVIOR" description="ROUTING_BEHAVIOR_DESC">
+                    <option value="default">DEFAULT_BEHAVIOR</option>
+                    <option value="menuitem">USE_MENU_ITEM</option>
+                </field>
+
+                <field name="menuitemid" type="menuitem" default="" label="USE_MENU_ITEM" description="USE_MENU_ITEM_DESC" state="1" />
 
                <field name="animation_settings" type="spacer" label="Style and animation" description="" />
 
