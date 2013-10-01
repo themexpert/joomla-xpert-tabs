@@ -1,7 +1,7 @@
 <?php
 /**
  * @package Xpert Tabs
- * @version 3.3
+ * @version ##VERSION##
  * @author ThemeXpert http://www.themexpert.com
  * @copyright Copyright (C) 2009 - 2011 ThemeXpert
  * @license http://www.gnu.org/licenses/gpl-2.0.html GNU/GPLv2 only
@@ -10,7 +10,7 @@
 
 ?>
 <!--Xpert Tabs 3.3 by ThemeXpert(www.themexpert.com)- Start-->
-<div id="<?php echo $module_id;?>" class="txtabs-wrap <?php echo $params->get('style','style1');?>">
+<div id="<?php echo $module_id;?>" class="txtabs-wrap <?php echo $params->get('mod_style','style1');?>">
 
     <?php if($tabs_position == 'top') echo $tabs_title;?>
 
